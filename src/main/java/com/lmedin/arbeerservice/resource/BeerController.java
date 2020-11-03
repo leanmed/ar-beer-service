@@ -12,26 +12,26 @@ import java.util.UUID;
 public class BeerController {
 
     @GetMapping("/{beerId}")
-    public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId){
+    public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId){
         //todo impl
         return new ResponseEntity<>(BeerDto.builder().build(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity handlePost(@RequestBody BeerDto beerDto){
+    public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto){
         //todo impl
         return new ResponseEntity<>(BeerDto.builder().build(), HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity handleUpdate(@PathVariable("beerId") UUID beerId,@RequestBody BeerDto beerDto){
+    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId,@RequestBody BeerDto beerDto){
         //todo impl
         return new ResponseEntity<>(BeerDto.builder().build(), HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{beerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBeer(@PathVariable("beerId") UUID beerId){
+    public void deleteBeerById(@PathVariable("beerId") UUID beerId){
         //todo impl
     }
 }
