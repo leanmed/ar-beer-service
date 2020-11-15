@@ -1,8 +1,7 @@
 package com.lmedin.arbeerservice.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.util.stream.Stream;
 
-@JsonFormat(shape = JsonFormat.Shape.STRING)
 public enum BeerStyleEnum {
 
     LARGER("LARGER"),
@@ -12,9 +11,17 @@ public enum BeerStyleEnum {
     IPA("IPA"),
     GOLD("GOLD");
 
-    public final String typeOfBeer;
+    public String typeOfBeer;
 
-    private BeerStyleEnum(String type){
+    BeerStyleEnum(String type){
         this.typeOfBeer = type;
+    }
+
+    public static BeerStyleEnum decode(final String typeOfBeer) {
+        return Stream.of(BeerStyleEnum.values()).filter(targetEnum -> targetEnum.typeOfBeer.equals(typeOfBeer)).findFirst().orElse(null);
+    }
+
+    public String getTypeOfBeer() {
+        return typeOfBeer;
     }
 }

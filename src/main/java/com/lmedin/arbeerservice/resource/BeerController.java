@@ -1,17 +1,20 @@
 package com.lmedin.arbeerservice.resource;
 
 import com.lmedin.arbeerservice.model.BeerDto;
+import com.lmedin.arbeerservice.resource.documentation.ApiBeerController;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.UUID;
 
-@RequestMapping("api/v1/beer")
+@Tag(name = "Beer Resource",description = "ABM for Beer")
 @RestController
-public class BeerController {
+@RequestMapping("api/v1/beer")
+public class BeerController implements ApiBeerController {
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId){
@@ -22,13 +25,16 @@ public class BeerController {
     @PostMapping
     public ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto){
         //todo impl
-        return new ResponseEntity<>(BeerDto.builder().build(), HttpStatus.CREATED);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location","/api/v1/beer/" + BeerDto.builder().build().getId().toString());
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @Valid @RequestBody BeerDto beerDto){
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateBeerById(@PathVariable("beerId") UUID beerId, @Valid @RequestBody BeerDto beerDto){
         //todo impl
-        return new ResponseEntity<>(BeerDto.builder().build(), HttpStatus.NO_CONTENT);
+
     }
 
     @DeleteMapping("/{beerId}")
