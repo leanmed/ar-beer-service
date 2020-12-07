@@ -30,7 +30,7 @@ public class BeerLoader implements CommandLineRunner {
             .beerStyle("IPA")
             .quantityOnHand(200)
             .minOnHand(12)
-            .upc(123L)
+            .upc("123L")
             .price(new BigDecimal(12.95))
             .build());
 
@@ -39,7 +39,7 @@ public class BeerLoader implements CommandLineRunner {
                     .beerStyle("GOLD")
                     .quantityOnHand(200)
                     .minOnHand(12)
-                    .upc(124L)
+                    .upc("124L")
                     .price(new BigDecimal(11.95))
                     .build());
             System.out.println("Loaded Beers " + beerRepository.count());

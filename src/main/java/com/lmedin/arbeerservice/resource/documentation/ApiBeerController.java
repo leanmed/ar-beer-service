@@ -32,7 +32,7 @@ public interface ApiBeerController{
     public ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto);
 
     @Operation(summary = "Update an existing beer")
-    public void updateBeerById(@PathVariable("beerId") UUID beerId, @Valid @RequestBody BeerDto beerDto);
+    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @Valid @RequestBody BeerDto beerDto);
 
     @Operation(summary = "Delete an existing beer")
     public void deleteBeerById(@PathVariable("beerId") UUID beerId);

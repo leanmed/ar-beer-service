@@ -1,5 +1,6 @@
 package com.lmedin.arbeerservice.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,9 +27,11 @@ public class BeerDto {
     private Integer version;
 
     @Null
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private OffsetDateTime createdDate;
 
     @Null
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private OffsetDateTime lastModifiedDate;
 
     @NotBlank
@@ -38,11 +41,11 @@ public class BeerDto {
     private BeerStyleEnum beerStyle;
 
     @NotNull
-    @Positive
-    private Long upc;
+    private String upc;
 
     @NotNull
     @Positive
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
 
     private Integer quantityOnHand;

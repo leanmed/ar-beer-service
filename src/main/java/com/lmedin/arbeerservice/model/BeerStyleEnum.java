@@ -13,11 +13,11 @@ public enum BeerStyleEnum {
 
     public String typeOfBeer;
 
-    BeerStyleEnum(String type){
+    private BeerStyleEnum(String type){
         this.typeOfBeer = type;
     }
 
-    public static BeerStyleEnum decode(final String typeOfBeer) {
+    public static BeerStyleEnum getBeerStyle(final String typeOfBeer) {
         return Stream.of(BeerStyleEnum.values()).filter(targetEnum -> targetEnum.typeOfBeer.equals(typeOfBeer)).findFirst().orElse(null);
     }
 
