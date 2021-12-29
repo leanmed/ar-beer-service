@@ -8,7 +8,6 @@ class ArBeerServiceApplicationTests {
 
     @Test
     void contextLoads() {
-    // test
     }
 
 }
